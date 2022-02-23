@@ -6,7 +6,7 @@ const DashboardRouter = () => {
   return (
     <div>
       <Routes>
-        <Route path="/register" element={<Dashboard />}></Route>
+        <Route path="/" element={<Dashboard></Dashboard>}></Route>
       </Routes>
     </div>
   );

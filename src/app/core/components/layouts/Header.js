@@ -6,9 +6,9 @@ export default class Header extends Component {
     return (
       <nav className="navbar navbar-expand-sm navbar-dark bg-dark mb-4">
         <div className="container">
-          <Link className="navbar-brand" to="/">
+          <a className="navbar-brand" href="landing.html">
             DevConnector
-          </Link>
+          </a>
           <button
             className="navbar-toggler"
             type="button"
@@ -30,9 +30,9 @@ export default class Header extends Component {
 
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
-                <Link className="nav-link" to="/auth/register">
+                <a className="nav-link" href="/auth/register">
                   Sign Up
-                </Link>
+                </a>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/auth/login">

@@ -1,10 +1,6 @@
-import PropTypes from "prop-types";
 import React, { useState } from "react";
-import { connect } from "react-redux";
-import { Navigate } from "react-router-dom";
-import { register } from "../action/authAction";
-
-const Register3 = ({ isAuthenticated, register }) => {
+import axios from "axios";
+export const Register2 = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -13,23 +9,21 @@ const Register3 = ({ isAuthenticated, register }) => {
   });
   const [error, setError] = useState({});
   const { name, email, password, password2 } = formData;
-  const onChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
   const onSubmit = (e) => {
     e.preventDefault();
     console.log("hello from login");
     console.log(JSON.stringify(formData));
-
-    if (password !== password2) {
-      // we need to inform that passwords are not matched.
-    } else {
-      register({ name, email, password });
-    }
+    // axios
+    //   .post("/api/users/register", formData)
+    //   .then((res) => console.log(JSON.stringify(res.data)))
+    //   .catch((err) => {
+    //     setError(err.response.data);
+    //     console.log(JSON.stringify(err.response.data));
+    //   });
   };
-  if (isAuthenticated) {
-    return <Navigate to="/dashboard"></Navigate>;
-  }
+  const onChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
   return (
     <div className="register">
       <div className="container">
@@ -91,14 +85,3 @@ const Register3 = ({ isAuthenticated, register }) => {
     </div>
   );
 };
-
-Register3.propTypes = {
-  isAuthenticated: PropTypes.bool,
-  register: PropTypes.func.isRequired,
-};
-
-const mapStateToProps = (state) => ({
-  isAuthenticated: state.auth.isAuthenticated,
-});
-
-export default connect(mapStateToProps, { register })(Register3);
